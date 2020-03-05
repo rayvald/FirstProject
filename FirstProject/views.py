@@ -28,3 +28,18 @@ def getDate(request):
     </html>""" % fecha_actual
 
     return HttpResponse(timeDate)
+
+def calculateAge(request, age, agno):
+    periodo = agno - 2020
+    futureAge = age + periodo
+
+    future="""
+    <html>
+    <body>
+    <h1>
+    En el año: %s tendrás: %s años
+    </h1>
+    </body>
+    </html>""" %(agno, futureAge)
+
+    return HttpResponse(future)
