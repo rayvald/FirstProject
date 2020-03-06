@@ -1,15 +1,19 @@
 from django.http import HttpResponse
+from django.template import Template, Context
 import datetime
 
-saludoMessage="""
-<html>
-<body>
-<h1>Hello World It's Siraj</h1>
-</body>
-</html>"""
 def saludo(request): #First View
+    doc_externo = open("/Users/osvaldomurillo/Documents/djangoProjects/FirstProject/FirstProject/templates/mytemplate.html")
 
-    return HttpResponse(saludoMessage)
+    tmp=Template(doc_externo.read())
+
+    doc_externo.close
+
+    ctx=Context()
+
+    document=tmp.render(ctx)
+
+    return HttpResponse(document)
 
 def goodbye(request):
 
