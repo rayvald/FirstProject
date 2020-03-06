@@ -1,9 +1,27 @@
 <html>
+
 <body>
     <h2 style="color: red;">
         これが私の最初のテンプレートです
     </h2>
-    <p>私の名前は: {{first_name}} {{last_name}}</p>
+    <!-- Calling method (upper) example -->
+    <p>私の名前は: {{first_name.upper}} {{last_name}}</p>
+    <!-- Calling property (day) example -->
     <p>日付：{{time.year}}年{{time.month}}月{{time.day}}日</p>
+    <p><strong>List topics:</strong></p>
+    <p>
+        <ul>
+            {% if topics %}
+                {% for t in topics %}
+
+                    <li>{{t}}</li>
+
+                {% endfor %}
+            {% else %}
+                <p>Don't have topics to show</p>
+            {% endif %}
+        </ul>
+    </p>
 </body>
+
 </html>

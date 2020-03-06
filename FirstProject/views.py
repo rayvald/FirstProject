@@ -10,9 +10,12 @@ class Person(object):
 
 
 def saludo(request): #First View
+    
     p1=Person("Ragnar", "Lothbrok")
     #first_name="Ragnar"
     #last_name="Lothbrok"
+
+    topics_list=["Templates", "Models", "Forms", "Views", "Deploy"]
     now=datetime.datetime.now()
 
     doc_externo = open("/Users/osvaldomurillo/Documents/djangoProjects/FirstProject/FirstProject/templates/mytemplate.html")
@@ -21,7 +24,7 @@ def saludo(request): #First View
 
     doc_externo.close
 
-    ctx=Context({"first_name":p1.first_name, "last_name":p1.last_name, "time":now})
+    ctx=Context({"first_name":p1.first_name, "last_name":p1.last_name, "time":now, "topics":topics_list})
 
     document=tmp.render(ctx)
 
