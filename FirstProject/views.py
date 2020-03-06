@@ -2,14 +2,26 @@ from django.http import HttpResponse
 from django.template import Template, Context
 import datetime
 
+class Person(object):
+
+    def __init__(self, first_name, last_name):
+        self.first_name=first_name
+        self.last_name=last_name
+
+
 def saludo(request): #First View
+    p1=Person("Ragnar", "Lothbrok")
+    #first_name="Ragnar"
+    #last_name="Lothbrok"
+    now=datetime.datetime.now()
+
     doc_externo = open("/Users/osvaldomurillo/Documents/djangoProjects/FirstProject/FirstProject/templates/mytemplate.html")
 
     tmp=Template(doc_externo.read())
 
     doc_externo.close
 
-    ctx=Context()
+    ctx=Context({"first_name":p1.first_name, "last_name":p1.last_name, "time":now})
 
     document=tmp.render(ctx)
 
