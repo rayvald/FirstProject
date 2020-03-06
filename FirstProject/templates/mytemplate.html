@@ -2,12 +2,18 @@
 
 <body>
     <h2 style="color: red;">
-        これが私の最初のテンプレートです
+        This is my first project using Templates in Django
     </h2>
+
+    {% if first_name == 'Ragnar' %}
+        <p>I'm the first developer in this project</p>
+    {% else %}
+        <p>I'm the second developer in this project</p>
+    {% endif %}
     <!-- Calling method (upper) example -->
-    <p>私の名前は: {{first_name.upper}} {{last_name}}</p>
+    <p>My name is: {{first_name.upper}} {{last_name}}</p>
     <!-- Calling property (day) example -->
-    <p>日付：{{time.year}}年{{time.month}}月{{time.day}}日</p>
+    <p>Date：{{time.year}}/{{time.month}}/{{time.day}}</p>
     <p><strong>List topics:</strong></p>
     <p>
         <ul>

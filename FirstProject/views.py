@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.template import Template, Context
+from django.template.loader import get_template
 import datetime
 
 class Person(object):
@@ -18,15 +19,20 @@ def saludo(request): #First View
     topics_list=["Templates", "Models", "Forms", "Views", "Deploy"]
     now=datetime.datetime.now()
 
-    doc_externo = open("/Users/osvaldomurillo/Documents/djangoProjects/FirstProject/FirstProject/templates/mytemplate.html")
+    #For Windows
+    #doc_externo=open("C:/Users/rayni/Desktop/djangoProjects/FirstProject/FirstProject/templates/mytemplate.html")
 
-    tmp=Template(doc_externo.read())
+    #For Linux and Mac
+    #doc_externo = open("/Users/osvaldomurillo/Documents/djangoProjects/FirstProject/FirstProject/templates/mytemplate.html")
 
-    doc_externo.close
+    #tmp=Template(doc_externo.read())
 
-    ctx=Context({"first_name":p1.first_name, "last_name":p1.last_name, "time":now, "topics":topics_list})
+    #doc_externo.close
 
-    document=tmp.render(ctx)
+    #ctx=Context({"first_name":p1.first_name, "last_name":p1.last_name, "time":now, "topics":topics_list})
+
+    doc_externo=get_template('mytemplate.html')
+    document=doc_externo.render({"first_name":p1.first_name, "last_name":p1.last_name, "time":now, "topics":topics_list})
 
     return HttpResponse(document)
 
